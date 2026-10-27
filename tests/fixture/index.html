@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>layout fixture</title>
+<style>
+  html, body { margin: 0; padding: 0; }
+  .hero { height: 300px; background: #eef2ff; }
+  .hero h1 { margin: 0; padding: 24px; font: 700 40px/1.2 system-ui, "Microsoft YaHei", sans-serif; }
+  .body { height: 1800px; background: linear-gradient(#ffffff, #f4f4f5); }
+  .wide { display: none; width: 1600px; height: 40px; background: #fee2e2; }
+  .wide.on { display: block; }
+  #toggle { position: fixed; top: 8px; right: 8px; padding: 8px 12px; }
+</style>
+</head>
+<body>
+  <button id="toggle">溢出</button>
+  <div class="hero"><h1>整页高度应为 2100px</h1></div>
+  <div class="body"></div>
+  <div class="wide" id="wide">比视口宽的元素</div>
+  <script>
+    document.getElementById("toggle").addEventListener("click", () => {
+      document.getElementById("wide").classList.add("on");
+    });
+    // ?tall=1 时把页面拉长，用来验证本地文件的查询参数确实传到了页面
+    if (new URLSearchParams(location.search).get("tall") === "1") {
+      document.querySelector(".body").style.height = "3000px";
+    }
+  </script>
+</body>
+</html>

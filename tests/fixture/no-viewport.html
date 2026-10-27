@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>没有 viewport meta 的页面</title>
+<style>
+  html, body { margin: 0; }
+  body { font: 700 22px/1.4 system-ui, "Microsoft YaHei", sans-serif; padding: 12px; }
+  #readout { background: #fde68a; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
+  @media (max-width: 500px) { .grid { grid-template-columns: 1fr; } }
+  .grid div { height: 60px; background: #e5e7eb; }
+</style>
+</head>
+<body>
+  <p id="readout"></p>
+  <div class="grid"><div></div><div></div><div></div></div>
+  <script>
+    document.getElementById("readout").textContent = "innerWidth = " + innerWidth;
+  </script>
+</body>
+</html>
